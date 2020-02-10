@@ -4,14 +4,19 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    Button button;
+    MainAdapter adapter;
+    ArrayList<String> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,20 +24,20 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         recyclerView = findViewById(R.id.recycler_view);
-
-        LinearLayoutManager LayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(LayoutManager);
-
-        MainAdapter adapter = new MainAdapter();
+        adapter = new MainAdapter();
         recyclerView.setAdapter(adapter);
+        getNewStudent();
 
-        button= findViewById(R.id.add_text);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
-            }
-        });
+    public void getNewStudent() {
+        String abc = getIntent().getStringExtra("key");
+        adapter.addText(abc);
+        Log.d("ololo", "getNewStudent: " + abc);
+    }
+
+    public void openHint(View view) {
+        startActivity(new Intent(this, SecondActivity.class));
     }
 }

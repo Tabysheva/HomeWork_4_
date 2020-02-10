@@ -16,5 +16,7 @@ public class MainViewHolder extends RecyclerView.ViewHolder {
         super(itemView);
 
         textView = itemView.findViewById(R.id.text_main);
+
     }
+    public void setText (String text) {textView.setText(text);}
 }

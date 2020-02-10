@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     ArrayList <String> data;
     public MainAdapter (){
-        data = new ArrayList<>();
+        data=new ArrayList<>();
         data.add("Алеев Рустам");
         data.add("Атаканов Айдар");
         data.add("Атаджанов Даврон");
@@ -54,5 +54,13 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+    public void addText (String text) {
+        data.add(text);
+        notifyDataSetChanged();
+    }
+    public void addStudent(ArrayList<String > data ){
+        this.data=data;
     }
 }
